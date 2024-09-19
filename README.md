@@ -18,7 +18,7 @@
 
 ТЕСТ test_get_book_genre_genre_returned - проверка метода get_book_genre:
     Добавляем книгу и добавляем ей жанр из списка.
-    Результат проверяем через обращение к словарю books_genre по ключу (название книги).
+    Результат проверяем через сравнение возвращаемого значения метода get_book_genre с установленным в тесте значением.
 
 ТЕСТ test_get_books_with_specific_genre_the_correct_list_is_displayed - проверка метода get_books_with_specific_genre:
     Добавляем книги разных жанров и добавляем им жанры.
@@ -29,8 +29,8 @@
     Результат проверяем через длину books_genre.
 
 ТЕСТ test_get_books_for_children_returned_books_for_children - проверка метода get_books_for_children:
-    Добавляем книги и жанры к ним.
-    Результат метода проверяем через длину списка books_for_children.
+    Добавляем книги и жанры к ним, также создаем список с книгами, которые ожидаем в результате метода.
+    Результат проверяем через проверку вхождение всех книг списка needed_books в результат метода get_books_for_children.
 
 ТЕСТ test_add_book_in_favorites_book_added - проверка метода add_book_in_favorites:
     Добавляем книгу в books_genre и добавляем книгу в список favorites.
@@ -42,4 +42,5 @@
     
 ТЕСТ test_get_list_of_favorites_books_list_returned - проверка метода get_list_of_favorites_books:
     Добавляем книги в books_genre и добавляем их в список favorites.
-    Результат проверяем через проверку длину списка favorites.
+    Создаем список с книгами, которые ожидаем в результате метода.
+    Результат проверяем через проверку вхождение книг списка needed_books в результат метода get_list_of_favorites_books.

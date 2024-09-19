@@ -46,7 +46,7 @@ class TestBooksCollector:
         collector.add_new_book('Свидание с Рамой')
         collector.set_book_genre('Свидание с Рамой', 'Фантастика')
 
-        assert collector.books_genre['Свидание с Рамой'] == 'Фантастика'
+        assert collector.get_book_genre('Свидание с Рамой') == 'Фантастика'
 
     def test_get_books_with_specific_genre_the_correct_list_is_displayed(self):  #проверяем, что выводятся книги только с указанным жанром
         collector = BooksCollector()
@@ -86,8 +86,9 @@ class TestBooksCollector:
         collector.add_new_book('Маленький принц')
         collector.set_book_genre('Маленький принц', 'Мультфильмы')
 
-        children_books_len = len(collector.get_books_for_children())
-        assert children_books_len == 3
+        needed_books = ['Мечтают ли андроиды об электроовцах?', 'Незнайка на Луне', 'Маленький принц']
+
+        assert all(book in collector.get_books_for_children() for book in needed_books)
 
     @pytest.mark.parametrize('name', ['Дюна', '451 градус по Фаренгейту', 'Задача трёх тел'])
     def test_add_book_in_favorites_book_added(self, name):
@@ -120,4 +121,6 @@ class TestBooksCollector:
         collector.add_new_book('Незнайка на Луне')
         collector.add_book_in_favorites('Незнайка на Луне')
 
-        assert len(collector.favorites) == 3
+        needed_books = ['Мечтают ли андроиды об электроовцах?', 'Тень над Иннсмутом', 'Незнайка на Луне']
+
+        assert all(book in collector.get_list_of_favorites_books() for book in needed_books)
